@@ -1,0 +1,2925 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+% you can play with different themes and color themes to find your favorite combination.
+\mode<presentation> {
+  \usetheme{Luebeck}
+  \usecolortheme{beaver}
+  \beamertemplatenavigationsymbolsempty
+  \setbeamertemplate{headline}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include necessary packages here
+\usepackage{graphicx} % for including images
+\usepackage{pgf} % for logo
+\usepackage{colortbl}
+\usepackage[usecourier=false]{jlcode} % For julia code
+\usepackage{listings} % For R code
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\date{} % Date, can be changed to a custom date
+
+\titlegraphic{
+
+\includegraphics[width=1.5cm]{/home/mv/Dropbox/IconsAndLogos/LogoBlueJustRing.jpg}\hspace*{2.5cm}~%
+\includegraphics[width=2cm]{/home/mv/Dropbox/IconsAndLogos/liulogo.png} \linebreak
+\hrulefill \break
+\tiny
+\includegraphics[width=0.33cm]{/home/mv/Dropbox/IconsAndLogos/web.png} \href{https://mattiasvillani.com}{mattiasvillani.com}\hspace*{1cm}~
+\includegraphics[width=0.3cm]{/home/mv/Dropbox/IconsAndLogos/twitter.jpg} \href{https://twitter.com/matvil}{@matvil}\hspace*{1cm}~
+\includegraphics[width=0.3cm]{/home/mv/Dropbox/IconsAndLogos/github.png} \href{https://github.com/mattiasvillani}{mattiasvillani}~
+}
+
+
+\definecolor{blue}{RGB}{38, 122, 181}
+\definecolor{orange}{RGB}{255, 128, 0}
+\definecolor{lorange}{RGB}{255, 178, 102}
+\definecolor{llorange}{RGB}{255, 229,204 }
+\definecolor{red}{RGB}{255, 128, 0}
+\definecolor{verylightgray}{RGB}{246, 246, 246}
+
+
+\setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
+
+\usepackage{tcolorbox}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{wasysym}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\end_preamble
+\options xcolor=svgnames
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\color orange
+Stationary Stochastic Processes
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\color gray
+Stationary Processes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+
+\color orange
+Lecture 1 - Stationary processes and spectral representations
+\end_layout
+
+\begin_layout Author
+
+\series bold
+Mattias Villani
+\series default
+ 
+\begin_inset Graphics
+	filename /home/mv/Dropbox/Teaching/BayesLearning/Misc/Beard Man Emoji.png
+	lyxscale 10
+	scale 2
+
+\end_inset
+
+ 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color gray
+Mattias Villani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+Department of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Stockholm University 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Linköping and Stockholm University
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Lecture overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Motivation
+\series default
+\color inherit
+: flexible statistical models as stochastic processes.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Decomposing a stochastic process into 
+\series bold
+\color blue
+random harmonics
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Ergodicity
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Spectral representation
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Literature: 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lindgren, Rootzén and Sandsten (2014).
+ 
+\emph on
+Stationary Stochastic Processes for Scientist and Engineers
+\emph default
+, CRC Press.
+ (
+\series bold
+\color blue
+LRS
+\series default
+\color inherit
+)
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lindgren (2014).
+ 
+\emph on
+Stationary Stochastic Processes
+\emph default
+, CRC Press.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Stochastic processes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stochastic process
+\series default
+\color inherit
+: an indexed family of random variables 
+\begin_inset Formula 
+\[
+\left\{ X(t),t\in T\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $T$
+\end_inset
+
+ can be an interval of 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ (
+\series bold
+\color blue
+continuous
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+time
+\series default
+\color inherit
+/parameter)
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T$
+\end_inset
+
+ can be a discrete set 
+\begin_inset Formula $T=\left\{ 1,2,3,\ldots\right\} $
+\end_inset
+
+ (
+\series bold
+\color blue
+discrete
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+time
+\series default
+\color inherit
+)
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t\in T$
+\end_inset
+
+ can be multi-dimensional.
+ 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Spatial process
+\series default
+\color inherit
+ (
+\series bold
+\color blue
+random field
+\series default
+\color inherit
+) 
+\begin_inset Formula $X(\boldsymbol{u})$
+\end_inset
+
+ with 
+\begin_inset Formula $\boldsymbol{u}=(u_{1},u_{2})$
+\end_inset
+
+ containing longitude and latitudes.
+ 
+\series bold
+\color blue
+Images
+\series default
+\color inherit
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Spatiotemporal process
+\series default
+\color inherit
+ 
+\begin_inset Formula $X(t,\boldsymbol{u})$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Sample space
+\series default
+\color inherit
+ 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+.
+ Stochastic process: 
+\begin_inset Formula $X(t,\omega)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Realization
+\series default
+\color inherit
+, 
+\series bold
+\color blue
+sample path
+\series default
+\color inherit
+ for a given 
+\begin_inset Formula $\omega\in\text{\ensuremath{\Omega}}$
+\end_inset
+
+: 
+\begin_inset Formula $t\mapsto X(t,\omega)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Ensemble
+\series default
+\color inherit
+: collection of all possible (
+\begin_inset Formula $\omega\in\text{\ensuremath{\Omega}}$
+\end_inset
+
+) sample paths.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Stochastic processes for flexible logistic regression
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stochastic processes = Random functions
+\series default
+\color inherit
+, 
+\begin_inset Formula $f(t)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Modern 
+\series bold
+\color blue
+flexible
+\series default
+\color inherit
+/semiparametric 
+\series bold
+\color blue
+statistical models
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+(Linear) 
+\series bold
+\color blue
+logistic regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathrm{Pr}(y=1\vert x)=\frac{\exp(\beta_{0}+\beta_{1}x)}{1+\exp(\beta_{0}+\beta_{1}x)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Log-odds is 
+\series bold
+\color blue
+linear in 
+\begin_inset Formula $x$
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Linear decision boundaries.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Gaussian process logistic regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathrm{Pr}(y=1\vert x)=\frac{\exp(f(x))}{1+\exp(f(x))}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ is a random function, i.e.
+ a stochastic process.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Smoothness of a stochastic process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Properties of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\series default
+\color inherit
+ are crucial for the statistical model.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We want 
+\series bold
+\color blue
+flexibility
+\series default
+\color inherit
+, but not crazy wiggly stuff.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+How 
+\series bold
+\color blue
+smooth
+\series default
+\color inherit
+ are realizations of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+?
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Three (related) 
+\series bold
+\color blue
+smoothness
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+characterizations
+\series default
+\color inherit
+:
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How fast does 
+\series bold
+\color blue
+
+\begin_inset Formula $\mathrm{Corr}\left[X(t),X(t+\tau)\right]$
+\end_inset
+
+ decay
+\series default
+\color inherit
+ with distance 
+\begin_inset Formula $\tau$
+\end_inset
+
+?
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuity and 
+\series bold
+\color blue
+differentiability of sample paths 
+\series default
+\color inherit
+
+\begin_inset Formula $X(t)$
+\end_inset
+
+? Quadratic mean convergence.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Decompose
+\series default
+\color inherit
+
+\begin_inset Formula $\{X(t)\}$
+\end_inset
+
+ as 
+\series bold
+\color blue
+sum of cosines
+\series default
+\color inherit
+ with random amplitudes and phases.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Moments
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The LRS book is mainly about 
+\series bold
+\color blue
+second order properties
+\series default
+\color inherit
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variances and (auto)correlations.
+ 
+\end_layout
+
+\begin_layout Itemize
+Spectral decomposition is a variance decomposition.
+ 
+\end_layout
+
+\begin_layout Itemize
+Gaussian processes.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mean function
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+m(t)=\mathbb{E}\left(X(t)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Variance function
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+v(t)=\mathbb{V}\left(X(t)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Covariance function
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+r(s,t)=\mathbb{C}\left(X(s),X(t)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Covariance of sums
+\begin_inset Formula 
+\[
+\mathbb{C}\left(\sum_{i=1}^{k}a_{i}X_{i},\sum_{j=1}^{l}b_{j}Y_{j}\right)=\sum_{i=1}^{k}\sum_{j=1}^{l}a_{i}b_{j}\mathbb{C}(X_{i},Y_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Dependence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stochastic process: 
+\series bold
+\color blue
+dependence
+\series default
+\color inherit
+ between variables in family.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Three useful 
+\series bold
+\color blue
+principles of dependence
+\series default
+\color inherit
+:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markov Principle
+\series default
+\color inherit
+: 
+\begin_inset Formula 
+\[
+p\left(X(t)\vert\left\{ X(\tau),\tau\leq s\right\} \right)=p\left(X(t)\vert X(s)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Martingale Principle
+\series default
+\color inherit
+: 
+\begin_inset Formula 
+\[
+\mathbb{E}\left(X(t)|\left\{ X(\tau),\tau\leq s\right\} \right)=X(s)\:\text{ for }\:s\leq t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stationarity Principle
+\series default
+\color inherit
+: For any choice of time periods 
+\begin_inset Formula $t_{1},\ldots,t_{n}$
+\end_inset
+
+ and lag 
+\begin_inset Formula $\tau$
+\end_inset
+
+ such that 
+\begin_inset Formula $t_{i}+\tau\in T$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p\left(X(t_{1}),\ldots,X(t_{n})\right)=p\left(X(t_{1}+\tau),\ldots,X(t_{n}+\tau)\right)
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Second order stationarity
+\series default
+\color inherit
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mean 
+\begin_inset Formula $m(t)$
+\end_inset
+
+ and variance 
+\begin_inset Formula $v(t)$
+\end_inset
+
+ constant over time, 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+covariance 
+\begin_inset Formula $r(s,t)$
+\end_inset
+
+ depend only on time lag 
+\begin_inset Formula $\tau=\left|t-s\right|$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+r(\tau)=r(t,t+\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Single harmonic with random amplitude and phase
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Random
+\series bold
+\color blue
+ phase 
+\series default
+\color inherit
+and
+\series bold
+\color blue
+ 
+\color orange
+amplitude
+\color blue
+ 
+\series default
+\color inherit
+process at fixed 
+\series bold
+\color purple
+frequency
+\series default
+\color inherit
+ 
+\begin_inset Formula $f_{0}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X(t)=\textcolor{orange}{A}\cos(2\pi\textcolor{purple}{f_{0}}t+\textcolor{blue}{\phi})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Periodic function with 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+period
+\series default
+\color inherit
+ 
+\begin_inset Formula $1/f_{0}$
+\end_inset
+
+ and 
+\series bold
+\color blue
+frequency
+\series default
+\color inherit
+ 
+\begin_inset Formula $f_{0}$
+\end_inset
+
+.
+ Hertz.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+amplitude
+\series default
+\color inherit
+ 
+\begin_inset Formula $A>0$
+\end_inset
+
+ independent of the 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+phase
+\series default
+\color inherit
+ 
+\begin_inset Formula $\phi\sim\mathrm{Uniform}(0,2\pi)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Strictly stationary because of the uniformly distributed phase.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Angular frequency
+\series default
+\color inherit
+: 
+\begin_inset Formula $\omega_{0}=2\pi f_{0}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $X(t)=A\cos(\omega_{0}t+\phi)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Moments:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{E}[X(t)]=0$
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{V}[X(t)]=\frac{1}{2}E[A^{2}]=\sigma^{2}$
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r(\tau)=\sigma^{2}\cos(2\pi f_{0}\tau)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Single harmonic with random amplitude and phase
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/singleharmonics.pdf
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Multiple random harmonics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Sum of harmonics 
+\series default
+\color inherit
+at fixed frequencies 
+\begin_inset Formula $f_{1},\ldots,f_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X(t)=A_{0}+\sum_{k=1}^{n}A_{k}\cos(2\pi f_{k}t+\phi_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Amplitudes
+\series default
+\color inherit
+ 
+\begin_inset Formula $A_{k}>0$
+\end_inset
+
+ indep of 
+\series bold
+\color blue
+phases
+\series default
+\color inherit
+ 
+\begin_inset Formula $\phi_{k}\sim\mathrm{Uniform}(0,2\pi)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Strictly stationary.
+ Moments:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{E}[X(t)]=0$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{V}[X(t)]=\sum_{k=0}^{n}\sigma_{k}^{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $\sigma_{k}^{2}=\frac{1}{2}E[A_{k}^{2}]$
+\end_inset
+
+.
+ 
+\series bold
+\color blue
+ANOVA
+\series default
+\color inherit
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r(\tau)=\sigma_{0}^{2}+\sum_{k=1}^{n}\sigma_{k}^{2}\cos(2\pi f_{k}\tau)$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Infinite number of harmonics - 
+\series bold
+\color blue
+stochastic convergence
+\series default
+\color inherit
+.
+ 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Harmonics are deep: 
+\series bold
+\color blue
+Cramér's representation
+\series default
+\color inherit
+ of any stationary process.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Multiple random harmonics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/sumharmonics.pdf
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Estimating the mean of a stationary process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Ensemble average
+\series default
+\color inherit
+ 
+\begin_inset Formula $m=\mathbb{E}[x(t)]$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Estimated by 
+\series bold
+\color blue
+time average
+\series default
+\color inherit
+:
+\begin_inset Formula 
+\[
+\hat{m}_{n}=\frac{1}{n}\sum_{t=1}^{n}X_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Unbiased
+\series default
+\color inherit
+ 
+\begin_inset Formula $\mathbb{E}[\hat{m}_{n}]=m$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Asymptotic variance
+\series default
+\color inherit
+ of 
+\begin_inset Formula $\hat{m}_{n}$
+\end_inset
+
+ (if 
+\begin_inset Formula $\sum_{\tau=0}^{\infty}r(\tau)$
+\end_inset
+
+ is convergent)
+\begin_inset Formula 
+\[
+\mathbb{V}[\hat{m}_{n}]\approx\frac{1}{n}\sum_{\tau=-\infty}^{\infty}r(\tau)=\frac{r(0)}{n}+\frac{2}{n}\sum_{\tau=1}^{\infty}r(\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Compare with iid observations [
+\begin_inset Formula $r(\tau)=0$
+\end_inset
+
+ for 
+\begin_inset Formula $\tau\neq0$
+\end_inset
+
+]: 
+\begin_inset Formula 
+\[
+\mathbb{V}[\hat{m}_{n}]\approx\frac{r(0)}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The estimator 
+\begin_inset Formula $\hat{m}_{n}$
+\end_inset
+
+ is therefore 
+\series bold
+\color blue
+consistent
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+in mean square
+\series default
+\color inherit
+ 
+\begin_inset Formula $\mathbb{E}[(\hat{m}_{n}-m)^{2}]\rightarrow0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ 
+\size tiny
+[
+\begin_inset Formula $\mathrm{MSE}=\mathrm{Bias}^{2}+\mathrm{Var}$
+\end_inset
+
+]
+\size default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+in probability
+\series default
+\color inherit
+ 
+\begin_inset Formula $\mathrm{P}(\left|\hat{m}_{n}-m\right|>\varepsilon)\rightarrow0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ 
+\size tiny
+[Markov's inequality]
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Ergodicity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Ensemble average
+\series default
+\color inherit
+ 
+\begin_inset Formula $m(t)=\mathbb{E}[x(t)]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/ensemble_iid.pdf
+	lyxscale 30
+	scale 22
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/ensemble_AR09.pdf
+	lyxscale 30
+	scale 22
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stationary process, 
+\begin_inset Formula $m(t)=m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/ensemble_iid_stationary.pdf
+	lyxscale 30
+	scale 22
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/ensemble_AR09_stationary.pdf
+	lyxscale 30
+	scale 22
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Ergodicity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/ensemble_iid_stationary.pdf
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/ensemble_AR09_stationary.pdf
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A process is 
+\series bold
+\color blue
+linearly ergodic
+\series default
+\color inherit
+ when the 
+\series bold
+\color blue
+time average
+\series default
+\color inherit
+ 
+\series bold
+\color orange
+consistently estimates
+\series default
+\color inherit
+ the 
+\series bold
+\color blue
+ensemble average
+\series default
+\color inherit
+ 
+\begin_inset Formula $m$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{m}_{n}=\frac{1}{n}\sum_{t=1}^{n}X_{t}\overset{p}{\rightarrow}m\text{ as }n\rightarrow\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Sufficient
+\series default
+\color inherit
+ for ergodicity: 
+\begin_inset Formula $\textcolor{orange}{\sum_{\tau=0}^{\infty}r(\tau)<\infty}$
+\end_inset
+
+ 
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\hat{m}_{n}\overset{p}{\rightarrow}m$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Ergodic process
+\series default
+\color inherit
+: time average can consistently estimate any ensemble average 
+\begin_inset Formula $\mathbb{E}[g(X_{t_{1}},X_{t_{2}},\ldots,X_{t_{p}})]$
+\end_inset
+
+.
+ Histograms.
+\end_layout
+
+\begin_layout Itemize
+Stationary Gaussian: ergodic if 
+\begin_inset Formula $\frac{1}{n}\sum_{\tau=1}^{n}r^{2}(\tau)\rightarrow0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Spectral density
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Spectral representation of $r(
+\backslash
+tau)$]
+\end_layout
+
+\end_inset
+
+If the covariance function 
+\begin_inset Formula $r(\tau)$
+\end_inset
+
+ of a stationary process 
+\begin_inset Formula $\{X(t),t\in\mathbb{R}\}$
+\end_inset
+
+ is 
+\series bold
+\color blue
+continuous
+\series default
+\color inherit
+, there exists a positive, 
+\series bold
+\color orange
+symmetric
+\series default
+\color inherit
+ and integrable function 
+\begin_inset Formula $R(f)$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+r(\tau)=\int_{-\infty}^{\infty}e^{i2\pi f\tau}R(f)df
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+
+\end_layout
+
+\begin_layout Itemize
+Converse holds.
+ Determines a valid covariance function.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Complex exponentials
+\series default
+\size small
+\color inherit
+
+\begin_inset Formula 
+\[
+e^{ix}=\cos(x)+i\cdot\sin(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The autocovariance function 
+\begin_inset Formula $r(\tau)$
+\end_inset
+
+ is indeed real:
+\size tiny
+
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}e^{i2\pi f\tau}R(f)df & =\int_{-\infty}^{\infty}\cos(2\pi f\tau)R(f)df+i\underset{=0}{\underbrace{\int_{-\infty}^{\infty}\sin(2\pi f\tau)R(f)df}}=2\int_{0}^{\infty}\cos(2\pi f\tau)R(f)df
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r(\tau)$
+\end_inset
+
+ continuous at 
+\begin_inset Formula $\tau=0$
+\end_inset
+
+, then 
+\begin_inset Formula $r(\tau)$
+\end_inset
+
+ continuous for all 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+AR(1) process example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+AR(1) process
+\begin_inset Formula 
+\[
+x_{t}=\mu+\phi(x_{t-1}-\mu)+\varepsilon_{t},\quad\varepsilon_{t}\overset{\mathrm{iid}}{\sim}N(0,\sigma_{\varepsilon}^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/ARprocess.png
+	lyxscale 30
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Spectral density as a variance decomposition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+variance
+\series default
+\color inherit
+ of the process
+\begin_inset Formula 
+\[
+\mathbb{V}[X(t)]=r(0)=\int_{-\infty}^{\infty}R(f)df
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Variance contribution
+\series default
+\color inherit
+ from the 
+\series bold
+\color blue
+frequency
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+band 
+\begin_inset Formula $a\leq f\leq b$
+\end_inset
+
+
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\int_{-b}^{-a}R(f)df+\int_{a}^{b}R(f)df=2\int_{a}^{b}R(f)df
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R(f)$
+\end_inset
+
+ represents a frequency with unit 
+\begin_inset Formula $[\mathrm{time}\mathrm{unit}]^{-1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Time in seconds: Hz.
+ 
+\begin_inset Formula $f=2$
+\end_inset
+
+ Hz, two full cycles per second.
+ 
+\end_layout
+
+\begin_layout Itemize
+High/Low frequency.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Change of time scale 
+\series default
+\color inherit
+
+\begin_inset Formula $X_{c}(t)=X(ct)$
+\end_inset
+
+ (e.g.
+ hours to sec).
+ 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $r_{c}(\tau)=r(c\tau)$
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R_{c}(f)=c^{-1}R(f/c)$
+\end_inset
+
+ [
+\emph on
+density
+\emph default
+, so change-of-variable formula.]
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Spectral density from autocovariance function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+spectral density 
+\begin_inset Formula $R(f)$
+\end_inset
+
+
+\series default
+\color inherit
+ can contain delta functions 
+\begin_inset Formula 
+\[
+\int g(f)\delta_{f_{0}}(f)df=g(f_{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Continuous spectrum
+\series default
+\color inherit
+: 
+\begin_inset Formula $R(f)$
+\end_inset
+
+ continuous except jumps.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Discrete spectrum
+\series default
+\color inherit
+: 
+\begin_inset Formula $R(f)=\sum_{k}b_{k}\delta_{f_{k}}(f)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\int_{-\infty}^{\infty}\left|r(\tau)\right|d\tau<\infty$
+\end_inset
+
+ the spectrum is continuous with density 
+\begin_inset Formula 
+\[
+R(f)=\int_{-\infty}^{\infty}e^{-i2\pi f\tau}r(\tau)d\tau
+\]
+
+\end_inset
+
+i.e.
+ 
+\series bold
+\color blue
+
+\begin_inset Formula $r(\tau)$
+\end_inset
+
+ and 
+\begin_inset Formula $R(f)$
+\end_inset
+
+ form a Fourier pair
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+R=\mathcal{F}(r)\text{ and }r=\mathcal{F}^{-1}(R)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Example - sinc function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Autocovariance function 
+\series bold
+\color blue
+sinc
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+r(\tau)=\frac{\sin(\pi\tau)}{\pi\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/ACF_sinc.pdf
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/specdens_box.pdf
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Proof:
+\begin_inset Formula 
+\[
+r(\tau)=\int_{-\infty}^{\infty}e^{i2\pi f\tau}R(f)df=\int_{-1/2}^{1/2}e^{i2\pi f\tau}df=\frac{e^{i\pi\tau}-e^{-i\pi\tau}}{i2\pi\tau}=\frac{\sin(\pi\tau)}{\pi\tau}
+\]
+
+\end_inset
+
+since for any complex number 
+\begin_inset Formula $z=a+i\cdot b$
+\end_inset
+
+ with conjugate 
+\begin_inset Formula $\bar{z}=a-i\cdot b$
+\end_inset
+
+ we have
+\begin_inset Formula 
+\[
+\mathrm{Re}(z)=a=\frac{z+\bar{z}}{2}\text{ and }\mathrm{Im}(z)=b=\frac{z-\bar{z}}{2i}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+z=e^{i\pi\tau}=\cos(\pi\tau)+i\cdot\sin(\pi\tau)\text{ and }\bar{z}=e^{-i\pi\tau}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Example - squared exponential
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Squared exponential covariance
+\series default
+\color inherit
+ kernel
+\begin_inset Formula 
+\[
+r(\tau)=\exp\left(-\frac{\tau^{2}}{2\ell^{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Check: 
+\size scriptsize
+
+\begin_inset Formula $\int_{-\infty}^{\infty}\left|r(\tau)\right|d\tau=\int_{-\infty}^{\infty}\exp\left(-\frac{\tau^{2}}{2\ell^{2}}\right)d\tau=\sqrt{2\pi\ell^{2}}<\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spectral density
+\size scriptsize
+
+\begin_inset Formula 
+\[
+R(f)=\int_{-\infty}^{\infty}e^{-i2\pi f\tau}r(\tau)d\tau=\int_{-\infty}^{\infty}e^{-[i2\pi f\tau+\tau^{2}/(2\ell^{2})]}r(\tau)d\tau=\textcolor{blue}{\sqrt{2\pi\ell^{2}}\exp(-2\pi^{2}\ell^{2}f^{2})}
+\]
+
+\end_inset
+
+
+\size default
+by completing the square in the exponent 
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+ Gaussian in 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/ACF_sqrexp.pdf
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/specdens_sqrexp.pdf
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Example - Matérn
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Matérn 
+\series default
+\color inherit
+with length scale 
+\begin_inset Formula $\ell>0$
+\end_inset
+
+ and degrees of freedom 
+\begin_inset Formula $\nu>0$
+\end_inset
+
+
+\series bold
+
+\begin_inset Formula 
+\[
+r(\tau)=\frac{2^{1-\nu}}{\Gamma(\nu)}\left(\frac{\sqrt{2\nu\left|\tau\right|}}{\ell}\right)^{\nu}K_{\nu}\left(\frac{\sqrt{2\nu\left|\tau\right|}}{\ell}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $K_{\nu}\left(x\right)$
+\end_inset
+
+ is modified Bessel function of the first kind of order 
+\begin_inset Formula $\nu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Spectral density is student-
+\begin_inset Formula $t$
+\end_inset
+
+
+\series default
+\color inherit
+ with 
+\begin_inset Formula $2\nu$
+\end_inset
+
+ degrees of freedom.
+\end_layout
+
+\begin_layout Itemize
+As 
+\begin_inset Formula $\nu\rightarrow\infty$
+\end_inset
+
+, Matérn approaches SE.
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $\nu=p+1/2$
+\end_inset
+
+ for integer 
+\begin_inset Formula $p$
+\end_inset
+
+: 
+\begin_inset Formula $r(\tau)$
+\end_inset
+
+ is the product of polynomial and exponential.
+\end_layout
+
+\begin_layout Itemize
+Example: 
+\begin_inset Formula $\nu=3/2$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+r(\tau)=\left(1+\frac{\sqrt{3}\left|\tau\right|}{\ell}\right)\exp\left(-\frac{\sqrt{3}\left|\tau\right|}{\ell}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+The Ornstein-Uhlenback process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\nu=1/2$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Exponential kernel = 
+\series bold
+\color blue
+Ornstein-Uhlenbeck
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+\begin_inset Formula $R(f)$
+\end_inset
+
+
+\series default
+\color inherit
+ is a 
+\series bold
+\color blue
+Cauchy
+\series default
+\color inherit
+.
+ Heavy tails, much mass on 
+\series bold
+\color blue
+high freq
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Ornstein-Uhlenbeck process
+\begin_inset Formula 
+\begin{align*}
+r(\tau) & =\sigma^{2}e^{-\alpha\left|\tau\right|}\\
+R(f) & =\sigma^{2}\frac{2\alpha}{\alpha^{2}+(2\pi f)^{2}}
+\end{align*}
+
+\end_inset
+
+In angular frequencies 
+\begin_inset Formula $\omega=2\pi f$
+\end_inset
+
+ (change-of-variables)
+\begin_inset Formula 
+\[
+\tilde{R}(\omega)=\frac{1}{2\pi}R\left(\frac{\omega}{2\pi}\right)=\sigma^{2}\frac{\alpha}{\pi\left(\alpha^{2}+\omega^{2}\right)}=\sigma^{2}\frac{1}{\pi\alpha\left(1+\left(\frac{\omega}{\alpha}\right)^{2}\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ times a Cauchy density with scale parameter 
+\begin_inset Formula $\alpha=1/\ell$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Example - Matérn
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/sim_matern12.pdf
+	lyxscale 20
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/sim_matern32.pdf
+	lyxscale 20
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figs/sim_matern52.pdf
+	lyxscale 20
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/sim_sqrexp.pdf
+	lyxscale 20
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1151 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+% you can play with different themes and color themes to find your favorite combination.
+\mode<presentation> {
+  \usetheme{Luebeck}
+  \usecolortheme{beaver}
+  \beamertemplatenavigationsymbolsempty
+  \setbeamertemplate{headline}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include necessary packages here
+\usepackage{graphicx} % for including images
+\usepackage{pgf} % for logo
+\usepackage{colortbl}
+\usepackage[usecourier=false]{jlcode} % For julia code
+\usepackage{listings} % For R code
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\date{} % Date, can be changed to a custom date
+
+\titlegraphic{
+
+\includegraphics[width=1.5cm]{/home/mv/Dropbox/IconsAndLogos/LogoBlueJustRing.jpg}\hspace*{2.5cm}~%
+\includegraphics[width=2cm]{/home/mv/Dropbox/IconsAndLogos/liulogo.png} \linebreak
+\hrulefill \break
+\tiny
+\includegraphics[width=0.33cm]{/home/mv/Dropbox/IconsAndLogos/web.png} \href{https://mattiasvillani.com}{mattiasvillani.com}\hspace*{1cm}~
+\includegraphics[width=0.3cm]{/home/mv/Dropbox/IconsAndLogos/twitter.jpg} \href{https://twitter.com/matvil}{@matvil}\hspace*{1cm}~
+\includegraphics[width=0.3cm]{/home/mv/Dropbox/IconsAndLogos/github.png} \href{https://github.com/mattiasvillani}{mattiasvillani}~
+}
+
+
+\definecolor{blue}{RGB}{38, 122, 181}
+\definecolor{orange}{RGB}{255, 128, 0}
+\definecolor{lorange}{RGB}{255, 178, 102}
+\definecolor{llorange}{RGB}{255, 229,204 }
+\definecolor{red}{RGB}{255, 128, 0}
+\definecolor{verylightgray}{RGB}{246, 246, 246}
+
+
+\setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
+
+\usepackage{tcolorbox}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{wasysym}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\end_preamble
+\options xcolor=svgnames
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\color orange
+Stationary Stochastic Processes
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\color gray
+Stationary Processes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+
+\color orange
+Lecture 1 - Stationary processes and spectral representations
+\end_layout
+
+\begin_layout Author
+
+\series bold
+Mattias Villani
+\series default
+ 
+\begin_inset Graphics
+	filename /home/mv/Dropbox/Teaching/BayesLearning/Misc/Beard Man Emoji.png
+	lyxscale 10
+	scale 2
+
+\end_inset
+
+ 
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+\color gray
+Mattias Villani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+Department of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Stockholm University 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Linköping and Stockholm University
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Lecture overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Modern flexible statistical models are based on stochastic processes.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Stochastic processes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stochastic process
+\series default
+\color inherit
+: an indexed family of random variables 
+\begin_inset Formula 
+\[
+\left\{ X(t),t\in T\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $T$
+\end_inset
+
+ can be an interval of 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ (
+\series bold
+\color blue
+continuous
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+time
+\series default
+\color inherit
+/parameter)
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T$
+\end_inset
+
+ can be a discrete set 
+\begin_inset Formula $T=\left\{ 1,2,3,\ldots\right\} $
+\end_inset
+
+ (
+\series bold
+\color blue
+discrete
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+time
+\series default
+\color inherit
+)
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t\in T$
+\end_inset
+
+ can be multi-dimensional.
+ 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Spatial process
+\series default
+\color inherit
+ (
+\series bold
+\color blue
+random field
+\series default
+\color inherit
+) 
+\begin_inset Formula $X(\boldsymbol{u})$
+\end_inset
+
+ with 
+\begin_inset Formula $\boldsymbol{u}=(u_{1},u_{2})$
+\end_inset
+
+ containing longitude and latitudes.
+ 
+\series bold
+\color blue
+Images
+\series default
+\color inherit
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Spatiotemporal process
+\series default
+\color inherit
+ 
+\begin_inset Formula $X(t,\boldsymbol{u})$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Sample space
+\series default
+\color inherit
+ 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+.
+ Stochastic process: 
+\begin_inset Formula $X(t,\omega)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Realization
+\series default
+\color inherit
+, 
+\series bold
+\color blue
+sample path
+\series default
+\color inherit
+ for a given 
+\begin_inset Formula $\omega\in\text{\ensuremath{\Omega}}$
+\end_inset
+
+: 
+\begin_inset Formula $t\mapsto X(t,\omega)$
+\end_inset
+
+.'
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Ensemble
+\series default
+\color inherit
+: collection of all possible sample paths.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Stochastic processes for flexible logistic regression
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stochastic processes = Random functions
+\series default
+\color inherit
+, 
+\begin_inset Formula $f(t)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Modern 
+\series bold
+\color blue
+flexible
+\series default
+\color inherit
+/semiparametric 
+\series bold
+\color blue
+statistical models
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+(Linear) 
+\series bold
+\color blue
+logistic regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathrm{Pr}(y=1\vert x)=\frac{\exp(\beta_{0}+\beta_{1}x)}{1+\exp(\beta_{0}+\beta_{1}x)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Log-odds is 
+\series bold
+\color blue
+linear in 
+\begin_inset Formula $x$
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Linear decision boundaries.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Gaussian process logistic regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathrm{Pr}(y=1\vert x)=\frac{\exp(f(x))}{1+\exp(f(x))}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ is a random function, i.e.
+ a stochastic process.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Smoothness of a stochastic process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Properties of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\series default
+\color inherit
+ are crucial for the statistical model.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We want 
+\series bold
+\color blue
+flexibility
+\series default
+\color inherit
+, but not crazy wiggly stuff.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+How 
+\series bold
+\color blue
+smooth
+\series default
+\color inherit
+ are realizations of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+?
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Three (related) 
+\series bold
+\color blue
+smoothness
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+characterizations
+\series default
+\color inherit
+:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How fast does 
+\begin_inset Formula $\mathrm{Corr}\left[X(t),X(t+\tau)\right]$
+\end_inset
+
+ decay with distance 
+\begin_inset Formula $\tau$
+\end_inset
+
+?
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuity and differentiability of sample paths 
+\begin_inset Formula $X(t)$
+\end_inset
+
+? Quadratic mean convergence.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Decompose
+\begin_inset Formula $\{X(t)\}$
+\end_inset
+
+ as sum of sin/cos with random amplitudes.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Moments
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The LRS book is mainly about 
+\series bold
+\color blue
+second order properties
+\series default
+\color inherit
+ of stochastic processes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variances and (auto)correlations.
+ 
+\end_layout
+
+\begin_layout Itemize
+Spectral decomposition is a variance decomposition.
+ 
+\end_layout
+
+\begin_layout Itemize
+Gaussian processes.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mean function
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+m(t)=\mathbb{E}\left(X(t)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Variance function
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+v(t)=\mathbb{V}\left(X(t)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Covariance function
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+r(s,t)=\mathbb{C}\left(X(s),X(t)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Covariance of sums
+\begin_inset Formula 
+\[
+\mathbb{C}\left(\sum_{i=1}^{k}a_{i}X_{i},\sum_{j=1}^{l}b_{j}Y_{j}\right)=\sum_{i=1}^{k}\sum_{j=1}^{l}a_{i}b_{j}\mathbb{C}(X_{i},Y_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Dependence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stochastic process: 
+\series bold
+\color blue
+dependence
+\series default
+\color inherit
+ between variables in family.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Three useful 
+\series bold
+\color blue
+principles of dependence
+\series default
+\color inherit
+:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markov Principle
+\series default
+\color inherit
+: 
+\begin_inset Formula 
+\[
+p\left(X(t)\vert\left\{ X(\tau),\tau\leq s\right\} \right)=p\left(X(t)\vert X(s)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Martingale Principle
+\series default
+\color inherit
+: 
+\begin_inset Formula 
+\[
+\mathbb{E}\left(X(t)|\left\{ X(\tau),\tau\leq s\right\} \right)=X(s)\:\text{ for }\:s\leq t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stationarity Principle
+\series default
+\color inherit
+: For any choice of time periods 
+\begin_inset Formula $t_{1},\ldots,t_{n}$
+\end_inset
+
+ and lag 
+\begin_inset Formula $\tau$
+\end_inset
+
+ such that 
+\begin_inset Formula $t_{i}+\tau\in T$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p\left(X(t_{1}),\ldots,X(t_{n})\right)=p\left(X(t_{1}+\tau),\ldots,X(t_{n}+\tau)\right)
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Second order stationarity
+\series default
+\color inherit
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mean 
+\begin_inset Formula $m(t)$
+\end_inset
+
+ and variance 
+\begin_inset Formula $v(t)$
+\end_inset
+
+ constant over time, 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+covariance 
+\begin_inset Formula $r(s,t)$
+\end_inset
+
+ depend only on time lag 
+\begin_inset Formula $\tau=\left|t-s\right|$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+r(\tau)=r(t,t+\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Harmonics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Random phase and amplitude 
+\series default
+\color inherit
+process
+\begin_inset Formula 
+\[
+X(t)=A\cos(2\pi f_{0}t+\phi)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Periodic function with 
+\series bold
+\color blue
+period
+\series default
+\color inherit
+ 
+\begin_inset Formula $1/f_{0}$
+\end_inset
+
+ and 
+\series bold
+\color blue
+frequency
+\series default
+\color inherit
+ 
+\begin_inset Formula $f_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The random 
+\series bold
+\color blue
+amplitude
+\series default
+\color inherit
+ 
+\begin_inset Formula $A>0$
+\end_inset
+
+ is independent of the 
+\series bold
+\color blue
+phase
+\series default
+\color inherit
+ 
+\begin_inset Formula $\phi\sim\mathrm{Uniform}(0,2\pi)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Strictly stationary because of the uniformly distributed phase.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Angular frequency
+\series default
+\color inherit
+: 
+\begin_inset Formula $\omega_{0}=2\pi f_{0}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X(t)=A\cos(\omega_{0}t+\phi)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
