@@ -1,7 +1,7 @@
 <!-- font: frutiger -->
 
 # Stochastic Process Lectures
-![](/Slides/figs/sim_matern12.pdf "Matern12")
+![](https://github.com/mattiasvillani/StochProcesses/blob/master/Slides/figs/sim_matern12.pdf "Matern12")
 
 ---
 
