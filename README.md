@@ -2,7 +2,7 @@
 
 # Stochastic Process Lectures
 
-<img src="[regsalarybyrank.png](https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/figs/sim_matern12.png)" width="48%" class="center" alt = "Matern12">
+<img src="https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/figs/sim_matern12.png" width="48%" class="center" alt = "Matern12">
 
 ---
 
