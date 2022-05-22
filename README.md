@@ -3,6 +3,9 @@
 # Stochastic Process Lectures
 
 <img src="https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/figs/sim_matern12.png" width="48%" class="center" alt = "Matern12">
+<img src="https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/figs/sim_matern32.png" width="48%" class="center" alt = "Matern32">
+<img src="https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/figs/sim_matern52.png" width="48%" class="center" alt = "Matern52">
+<img src="https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/figs/sim_sqrexp.png" width="48%" class="center" alt = "Square Exponential">
 
 ---
 
