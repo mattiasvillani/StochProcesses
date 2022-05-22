@@ -2,7 +2,7 @@
 
 # Stochastic Process Lectures
 
-<img src="figs/sim_matern12.pdf" width="48%" class="center" alt = "Matern12">
+<img src="/figs/sim_matern12.pdf" width="48%" class="center" alt = "Matern12">
 
 ---
 
