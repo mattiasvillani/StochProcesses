@@ -38,7 +38,7 @@ Division of Statistics and Machine Learning, Linköping University
 ---
 
 **Lecture 1 - Stationary Stochastic Processes**\
-Reading: LRS Ch. X, Y |  LAdv Ch. X, Y | [Slides](https://github.com/mattiasvillani/StochasticProcesses/raw/master/Slides/SP_L1.pdf) \
+Reading: LRS Ch. X, Y |  LAdv Ch. X, Y | [Slides](https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/SP_L1.pdf) \
 
 **Lecture 2 - Spectral properties and representation**\
-Reading: LRS Ch. X, Y |  LAdv Ch. X, Y | [Slides](https://github.com/mattiasvillani/StochasticProcesses/raw/master/Slides/SP_L2.pdf) \
+Reading: LRS Ch. X, Y |  LAdv Ch. X, Y | [Slides](https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/SP_L2.pdf) \
