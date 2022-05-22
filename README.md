@@ -1,8 +1,7 @@
 <!-- font: frutiger -->
 
 # Stochastic Process Lectures
-
-<img src="/Slides/figs/sim_matern12.pdf" width="48%" class="center" alt = "Matern12">
+![](/Slides/figs/sim_matern12.pdf "Matern12")
 
 ---
 
