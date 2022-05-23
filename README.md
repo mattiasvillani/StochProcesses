@@ -38,7 +38,12 @@ Division of Statistics and Machine Learning, Linköping University
 ---
 
 **Lecture 1 - Stationary Stochastic Processes**\
-Reading: LRS Ch. X, Y |  LAdv Ch. X, Y | [Slides](https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/SP_L1.pdf) 
+Reading: LRS Ch. X, Y |  LAdv Ch. X, Y | [Slides](https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/SP_L1.pdf) \
+Extra: [trig cheat sheet](https://kupdf.net/download/trig-cheat-sheet_59b2560bdc0d609014568edd_pdf) | [Appendix A on complex exponentials](https://see.stanford.edu/materials/lsoftaee261/book-fall-07.pdf)
 
 **Lecture 2 - Spectral properties and representation**\
 Reading: LRS Ch. X, Y |  LAdv Ch. X, Y | [Slides](https://github.com/mattiasvillani/StochProcesses/raw/master/Slides/SP_L2.pdf) 
+
+
+
+
