@@ -259,7 +259,7 @@ Spectral density in discrete time
 
 \series bold
 \color blue
-Periodogram and Whittle likelihood
+Convergence in quadratic mean
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1484,8 +1484,6 @@ Y(t)=\int_{-\infty}^{\infty}h(u)X(t-u)du
 
 \begin_layout Itemize
 Discrete time linear filter
-\size footnotesize
-
 \begin_inset Formula 
 \[
 Y_{t}=\sum_{u=-\infty}^{\infty}h(u)X_{t-u}
@@ -1497,7 +1495,7 @@ Y_{t}=\sum_{u=-\infty}^{\infty}h(u)X_{t-u}
 \end_layout
 
 \begin_layout Itemize
-Impulse reponse: response to a 'unit blip at time 
+Impulse reponse: reponse to a 'unit blip at time 
 \begin_inset Formula $t$
 \end_inset
 
@@ -1506,8 +1504,6 @@ Impulse reponse: response to a 'unit blip at time
 \end_inset
 
 ,
-\size footnotesize
-
 \begin_inset Formula 
 \[
 Y(t)=\int_{-\infty}^{\infty}h(u)X(t-u)du=h(t)
@@ -1518,63 +1514,6 @@ Y(t)=\int_{-\infty}^{\infty}h(u)X(t-u)du=h(t)
 
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-\color blue
-Frequency function
-\series default
-\color inherit
- of the filter 
-\begin_inset Formula $h(t)$
-\end_inset
-
-
-\size footnotesize
-
-\begin_inset Formula 
-\[
-H(f)=\int_{-\infty}^{\infty}e^{-i2\pi fu}h(u)du
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-H(f)=\sum_{u=-\infty}^{\infty}e^{-i2\pi fu}h(u)du
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Convolutions
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
 \begin_layout Itemize
 
 \series bold

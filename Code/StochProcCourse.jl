@@ -253,3 +253,25 @@ savefig(figFolder*"sim_matern32.pdf")
 p = PlotGPDraws(3, MaternKernel(ν = ν), 1, ℓ; cols = colors[[2 4 6]])
 title!(p, "Matern "*L"(\nu=5/2)"*", "*L"\ell = %$ℓ")
 savefig(figFolder*"sim_matern52.pdf")
+
+
+# Aliasing
+tGrid = -10:0.01:10
+tGridDiscrete = minimum(tGrid):maximum(tGrid)
+ω = 0.9;
+k = 0
+plot(tGrid, cos.((ω + k*π)*tGrid), xlab = L"t", 
+    label = L"\omega = %$ω, k = %$k", legend = :topright, 
+    c = colors[2], title = L"\cos[(\omega +  k \pi) t]")
+k = 2
+plot!(tGrid, cos.((ω + k*π)*tGrid), xlab = L"t", 
+    label = L"\omega = %$ω, k = %$k", legend = :topright, 
+    c = colors[1])
+k = 0
+scatter!(tGridDiscrete, cos.((ω + k*π)*tGridDiscrete), color = colors[2], 
+    markersize = 6, label = "Sampled "*L"\Delta t = 1")
+k = 2
+scatter!(tGridDiscrete, cos.((ω + k*π)*tGridDiscrete), color = colors[1], 
+    markersize = 4, label = "Sampled "*L"\Delta t = 1")
+
+savefig(figFolder*"aliasing.pdf")
