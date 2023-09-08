@@ -33,9 +33,7 @@ The lectures will be based on parts of the following books:
 <img src="Misc/VillaniLowRes.jpg" width="100">\
 [Mattias Villani](https://mattiasvillani.com), Lecturer \
 Professor, Natural Born Bayesian :stuck_out_tongue_winking_eye: \
-Department of Statistics, Stockholm University \
-Division of Statistics and Machine Learning, Linköping University
-
+Department of Statistics, Stockholm University 
 ---
 
 **Lecture 1 - Stationary stochastic processes and spectral properties**\
